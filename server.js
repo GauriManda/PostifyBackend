@@ -57,9 +57,7 @@ app.get("/api/health", (req, res) => {
   });
 });
 app.get("/", (req, res) => {
-  res.send(
-    "Welcome to Postify Backend 🚀 — visit /api/health to check server status"
-  );
+  res.send("Welcome to Postify Backend ");
 });
 
 // Error handling middleware
