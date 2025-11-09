@@ -56,6 +56,11 @@ app.get("/api/health", (req, res) => {
       mongoose.connection.readyState === 1 ? "Connected" : "Disconnected",
   });
 });
+app.get("/", (req, res) => {
+  res.send(
+    "Welcome to Postify Backend 🚀 — visit /api/health to check server status"
+  );
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
