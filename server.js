@@ -8,6 +8,16 @@ const postRoutes = require("./routes/posts");
 
 const app = express();
 
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://postify-frontend-orcin.vercel.app/",
+    ],
+    credentials: true,
+  })
+);
+
 // Middleware
 app.use(
   cors({
