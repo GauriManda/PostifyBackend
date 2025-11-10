@@ -12,19 +12,12 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://postify-frontend-orcin.vercel.app/",
+      "https://postify-frontend-orcin.vercel.app",
     ],
     credentials: true,
   })
 );
 
-// Middleware
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
@@ -40,15 +33,13 @@ mongoose
     process.exit(1);
   });
 
-// MongoDB Connection Events
+// MongoDB Events
 mongoose.connection.on("connected", () => {
   console.log(" Mongoose connected to MongoDB");
 });
-
 mongoose.connection.on("error", (err) => {
   console.error(" Mongoose connection error:", err);
 });
-
 mongoose.connection.on("disconnected", () => {
   console.log(" Mongoose disconnected");
 });
@@ -66,6 +57,7 @@ app.get("/api/health", (req, res) => {
       mongoose.connection.readyState === 1 ? "Connected" : "Disconnected",
   });
 });
+
 app.get("/", (req, res) => {
   res.send("Welcome to Postify Backend ");
 });
